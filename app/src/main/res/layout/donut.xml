@@ -11,7 +11,7 @@
         android:id="@+id/textView8"
         android:layout_width="196dp"
         android:layout_height="53dp"
-        android:text="@string/order_donuts"
+        android:text="@string/order_Donuts"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.124" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/backToMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/back"
@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.004" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/DonutImage"
         android:layout_width="213dp"
         android:layout_height="170dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,8 +46,8 @@
 
     <Spinner
         android:id="@+id/spinner3"
-        android:layout_width="162dp"
-        android:layout_height="35dp"
+        android:layout_width="159dp"
+        android:layout_height="83dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
