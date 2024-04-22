@@ -24,4 +24,6 @@
     <string name="order_Sandwich">Order Sandwich</string>
     <string name="forward"><![CDATA[>>]]></string>
     <string name="rem"><![CDATA[<<]]></string>
+    <string name="order_donuts">Order Donuts</string>
+    <string name="home_screen">home screen</string>
 </resources>

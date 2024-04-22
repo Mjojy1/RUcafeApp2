@@ -1,7 +1,9 @@
 package com.example.rucafeapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,10 +14,12 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context context;
     List<Donut> donuts;
+    private SelectListener donutListener;
 
-    public MyAdapter(Context context, List<Donut> donuts) {
+    public MyAdapter(Context context, List<Donut> donuts,SelectListener donutListener) {
         this.context = context;
         this.donuts = donuts;
+        this.donutListener = donutListener;
     }
 
     @NonNull
@@ -25,11 +29,18 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder,@SuppressLint("RecyclerView") int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.donutPrice.setText(String.valueOf(donuts.get(position).getPrice()));
         myViewHolder.donutType.setText(donuts.get(position).getFlavor());
         myViewHolder.imageView.setImageResource(donuts.get(position).getImage());
+
+        myViewHolder.donutRelativeLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                donutListener.onItemClick(donuts.get(position));
+            }
+        });
     }
 
     @Override
