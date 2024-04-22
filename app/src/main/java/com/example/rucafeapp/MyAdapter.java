@@ -29,18 +29,23 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder,@SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         myViewHolder.donutPrice.setText(String.valueOf(donuts.get(position).getPrice()));
         myViewHolder.donutType.setText(donuts.get(position).getFlavor());
-        myViewHolder.imageView.setImageResource(donuts.get(position).getImage());
 
-        myViewHolder.donutRelativeLayout.setOnClickListener(new View.OnClickListener(){
+        // Check if imageView is null before setting image resource
+        if (myViewHolder.imageView != null) {
+            myViewHolder.imageView.setImageResource(donuts.get(position).getImage());
+        }
+
+        myViewHolder.donutRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 donutListener.onItemClick(donuts.get(position));
             }
         });
+
     }
 
     @Override

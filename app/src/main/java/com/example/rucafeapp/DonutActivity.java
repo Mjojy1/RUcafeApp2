@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Insets;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -73,7 +72,7 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
         RecyclerView recyclerView = findViewById(R.id.donutList);
 
         List<Donut> donuts = new ArrayList<>();
-        donuts.add(new Donut("jelly", 1.79, R.drawable.jellyd));
+        donuts.add(new Donut("jelly", 1.79, R.drawable.firstimga));
         donuts.add(new Donut("vanilla Frosted Cake", 1.89, R.drawable.vanillafrosted));
         donuts.add(new Donut("Chocolate Cake", 1.89, R.drawable.chocofrost));
         donuts.add(new Donut("Blueberry Cake", 1.89, R.drawable.blueberry));
