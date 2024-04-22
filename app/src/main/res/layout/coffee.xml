@@ -33,7 +33,7 @@
         app:layout_constraintVertical_bias="0.082" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/sweetCreamCheckBox"
         android:layout_width="146dp"
         android:layout_height="51dp"
         android:text="@string/sweet_cream"
@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.523" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/mochaCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mocha"
@@ -60,9 +60,9 @@
         app:layout_constraintVertical_bias="0.525" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="127dp"
-        android:layout_height="35dp"
+        android:id="@+id/sizeSpinner"
+        android:layout_width="128dp"
+        android:layout_height="71dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
@@ -71,7 +71,7 @@
         app:layout_constraintVertical_bias="0.525" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/frenchVanillaCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/french_vanilla"
@@ -85,7 +85,7 @@
         app:layout_constraintVertical_bias="0.632" />
 
     <CheckBox
-        android:id="@+id/checkBox6"
+        android:id="@+id/caramelCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/caramel"
@@ -99,14 +99,18 @@
         app:layout_constraintVertical_bias="0.632" />
 
     <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="136dp"
-        android:layout_height="39dp"
-        tools:layout_editor_absoluteX="264dp"
-        tools:layout_editor_absoluteY="533dp" />
+        android:id="@+id/quantitySpinner"
+        android:layout_width="123dp"
+        android:layout_height="74dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.636" />
 
     <CheckBox
-        android:id="@+id/checkBox7"
+        android:id="@+id/irishCreamCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/irish_cream"
@@ -120,7 +124,7 @@
         app:layout_constraintVertical_bias="0.736" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/addCoffee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_to_order"
@@ -142,9 +146,11 @@
         app:layout_constraintVertical_bias="0.741">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText3"
+            android:id="@+id/coffeeTotal"
             android:layout_width="174dp"
             android:layout_height="42dp"
+            android:clickable="false"
+            android:editable="false"
             android:hint="@string/sub_total" />
     </com.google.android.material.textfield.TextInputLayout>
 

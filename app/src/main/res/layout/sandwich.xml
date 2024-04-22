@@ -43,43 +43,40 @@
         app:layout_constraintVertical_bias="0.295"
         app:srcCompat="@drawable/sanwich2" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:text="Bagel"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="126dp"
-        android:layout_height="52dp"
-        android:text="Wheat Bread"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <RadioGroup
+        android:id="@+id/breadGroup"
+        android:layout_width="403dp"
+        android:layout_height="87dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/sandwichTotal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536" />
+        app:layout_constraintVertical_bias="0.599">
 
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sour Dough"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
+        <RadioButton
+            android:id="@+id/bagelType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="Bagel"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/wheatType"
+            android:layout_width="126dp"
+            android:layout_height="52dp"
+            android:text="Wheat Bread"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/sourType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sour Dough"
+            android:textSize="16sp" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/textView4"
@@ -107,43 +104,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.621" />
 
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Beef"
+    <RadioGroup
+        android:id="@+id/meatGroup"
+        android:layout_width="231dp"
+        android:layout_height="87dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        app:layout_constraintVertical_bias="0.711">
 
-    <RadioButton
-        android:id="@+id/radioButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chicken"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.658" />
+        <RadioButton
+            android:id="@+id/beefType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Beef" />
 
-    <RadioButton
-        android:id="@+id/radioButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fish"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.696" />
+        <RadioButton
+            android:id="@+id/chickenType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chicken"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/fishType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fish"
+            android:textSize="16sp" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/textView6"
@@ -160,7 +151,7 @@
         app:layout_constraintVertical_bias="0.747" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/lettuceAddOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lettuce"
@@ -173,7 +164,7 @@
         app:layout_constraintVertical_bias="0.797" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/tomatoAddOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tomato"
@@ -186,7 +177,7 @@
         app:layout_constraintVertical_bias="0.797" />
 
     <CheckBox
-        android:id="@+id/checkBox8"
+        android:id="@+id/cheeseAddOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cheese"
@@ -199,7 +190,7 @@
         app:layout_constraintVertical_bias="0.854" />
 
     <CheckBox
-        android:id="@+id/checkBox9"
+        android:id="@+id/onionAddOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Onion"
@@ -212,7 +203,7 @@
         app:layout_constraintVertical_bias="0.854" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/addSandwich"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add To Order"
@@ -241,14 +232,19 @@
         android:layout_height="53dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.522">
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/sandwichTotal"
         android:layout_width="138dp"
         android:layout_height="52dp"
+        android:clickable="false"
+        android:editable="false"
         android:hint="total"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
