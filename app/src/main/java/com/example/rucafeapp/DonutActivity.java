@@ -1,5 +1,6 @@
 package com.example.rucafeapp;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Insets;
 import android.os.Build;
@@ -22,12 +23,13 @@ import java.util.List;
 
 public class DonutActivity extends AppCompatActivity implements SelectListener {
 
-    public static Donut mainDonut;
+    public Donut mainDonut;
     private ListView listView;
-    private ArrayList<Donut> donutArrayList = new ArrayList<>();
+    private ArrayList<Donut> donutArrayList = new ArrayList<Donut>();
     private Button add;
     private Button remove;
     private Spinner quantOfDonuts;
+    private Button addDonutOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,8 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
         add = findViewById(R.id.addDonutsToListView);
         remove = findViewById(R.id.removeDonutsFromListView);
         quantOfDonuts = findViewById(R.id.quantOfDonuts);
+        addDonutOrder = findViewById(R.id.addDonutOrder);
+
 
         add.setOnClickListener(v -> addToDonutAL());
         remove.setOnClickListener(v -> removeFromDonutAL());
@@ -87,12 +91,24 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), donuts, (SelectListener) this));
+
+        addDonutOrder.setOnClickListener(v -> {
+            AddDonutOrder();
+        });
     }
 
     @Override
     public void onItemClick(Donut donut) {
         Toast.makeText(this, "Clicked Donut Flavor" + donut.getFlavor() + ",Price: " + donut.getPrice(), Toast.LENGTH_SHORT).show();
         mainDonut = donut;
+    }
+
+    private void AddDonutOrder() {
+        for(Donut donut : donutArrayList) {
+            OrderTracker.addDonut(donut.getFlavor(), donut.getPrice());
+        }
+        donutArrayList.clear();
+        updateListView();
     }
 
     public void addToDonutAL() {

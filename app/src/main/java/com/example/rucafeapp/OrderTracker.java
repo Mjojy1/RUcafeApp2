@@ -43,8 +43,8 @@ public class OrderTracker {
      * @param flavor flavor of the donut
      * @param price  price of the donut
      */
-    public static void addDonut(String flavor, double price,int image){
-        Donut donut = new Donut(flavor, price,image);
+    public static void addDonut(String flavor, double price){
+        Donut donut = new Donut(flavor, price);
         currentOrder.add(donut);
     }
 

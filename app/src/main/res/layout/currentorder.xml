@@ -61,27 +61,21 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
-        android:layout_width="177dp"
-        android:layout_height="58dp"
+        android:layout_width="181dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.675"
+        app:layout_constraintHorizontal_bias="0.639"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849">
+        app:layout_constraintVertical_bias="0.847">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/salesTaxInput"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:hint="@string/hint" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="176dp"
-        android:layout_height="63dp"
-        android:hint="@string/hint"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.69"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
@@ -89,13 +83,13 @@
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintHorizontal_bias="0.635"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777">
+        app:layout_constraintVertical_bias="0.764">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
+            android:id="@+id/subTotalInput"
             android:layout_width="174dp"
             android:layout_height="53dp"
             android:hint="@string/hint" />
@@ -110,12 +104,12 @@
         app:layout_constraintHorizontal_bias="0.646"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916">
+        app:layout_constraintVertical_bias="0.931">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText2"
-            android:layout_width="148dp"
-            android:layout_height="44dp"
+            android:id="@+id/totalAmountInput"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
             android:hint="@string/hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,7 +126,7 @@
         app:layout_constraintVertical_bias="0.005" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/removeItem"
         android:layout_width="195dp"
         android:layout_height="54dp"
         android:text="@string/remove_selected_item"
@@ -144,7 +138,7 @@
         app:layout_constraintVertical_bias="0.98" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/placeOrder"
         android:layout_width="139dp"
         android:layout_height="56dp"
         android:text="@string/place_order"
@@ -156,12 +150,13 @@
         app:layout_constraintVertical_bias="0.981" />
 
     <ListView
-        android:layout_width="409dp"
-        android:layout_height="481dp"
+        android:id="@+id/currentOrderList"
+        android:layout_width="413dp"
+        android:layout_height="404dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintVertical_bias="0.345" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

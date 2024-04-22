@@ -136,8 +136,8 @@
         app:layout_constraintVertical_bias="0.844" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="177dp"
-        android:layout_height="54dp"
+        android:layout_width="211dp"
+        android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.982"
@@ -147,8 +147,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/coffeeTotal"
-            android:layout_width="174dp"
-            android:layout_height="42dp"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
             android:clickable="false"
             android:editable="false"
             android:hint="@string/sub_total" />
@@ -158,7 +158,7 @@
         android:id="@+id/coffeeBackToMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.021"

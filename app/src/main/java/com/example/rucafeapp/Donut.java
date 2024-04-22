@@ -22,6 +22,11 @@ public class Donut extends MenuItem{
         this.price = price;
         this.image = image;
     }
+    public Donut(String flavor, double price){
+        this.flavor = flavor;
+        this.price = price;
+        this.image = 0;
+    }
 
     public Double getPrice() {
         return price;

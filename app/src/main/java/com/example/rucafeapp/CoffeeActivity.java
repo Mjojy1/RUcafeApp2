@@ -65,7 +65,7 @@ public class CoffeeActivity extends AppCompatActivity {
 
         addCoffee.setOnClickListener(v -> {
             String size = sizeSpinner.getSelectedItem().toString();
-            for(int i = 0; i < quantitySpinner.getSelectedItemPosition(); i++){
+            for(int i = 0; i < quantitySpinner.getSelectedItemPosition()+1; i++){
                 OrderTracker.addCoffee(size, getAddOns(), subTotal());
             }
         });
