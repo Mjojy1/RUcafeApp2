@@ -9,6 +9,7 @@ package com.example.rucafeapp;
 public class Donut extends MenuItem{
     private double price;
     private String flavor;
+    private int image;
 
     /**
      * Constructor for Donut
@@ -16,10 +17,23 @@ public class Donut extends MenuItem{
      * @param flavor flavor of the donut
      * @param price  price of the donut
      */
-    public Donut(String flavor, double price){
+    public Donut(String flavor, double price, int image){
         this.flavor = flavor;
         this.price = price;
+        this.image = image;
     }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+    public int getImage(){
+        return image;
+    }
+
     /**
      * Returns the price of the donut
      * @return price of the donut
@@ -39,4 +53,6 @@ public class Donut extends MenuItem{
                 ", price=" + price +
                 '}';
     }
+
+
 }
