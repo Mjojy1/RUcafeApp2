@@ -29,4 +29,22 @@
     <string name="add_to">Add to</string>
     <string name="remove">Remove</string>
     <string name="quantity_of_donuts">Quantity of Donuts</string>
+    <string name="Back">back</string>
+    <string name="order_sandwich">Order Sandwich</string>
+    <string name="bagel">Bagel</string>
+    <string name="wheat_bread">Wheat Bread</string>
+    <string name="sour_dough">Sour Dough</string>
+    <string name="bread">Bread</string>
+    <string name="protein">Protein</string>
+    <string name="beef">Beef</string>
+    <string name="chicken">Chicken</string>
+    <string name="fish">Fish</string>
+    <string name="addon">AddOn</string>
+    <string name="lettuce">Lettuce</string>
+    <string name="tomato">Tomato</string>
+    <string name="cheese">Cheese</string>
+    <string name="onion">Onion</string>
+    <string name="addtoOrder">Add To Order</string>
+    <string name="sub_Total">Sub-Total</string>
+    <string name="Total">total</string>
 </resources>
