@@ -1,5 +1,6 @@
 package com.example.rucafeapp;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Insets;
@@ -20,10 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DonutActivity extends AppCompatActivity implements SelectListener {
 
     public Donut mainDonut;
+    private RecyclerView recyclerView;
     private ListView listView;
     public ArrayList<Donut> donutArrayList = new ArrayList<Donut>();
     private ArrayList<Donut> selectedDonutsList = new ArrayList<>();
@@ -37,7 +40,7 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.donut);
-
+        recyclerView = findViewById(R.id.donutList);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coffeeSize), (v, insets) -> {
             Insets systemBars = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
@@ -131,36 +134,38 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
     }
 
     public void removeFromDonutAL() {
-        int a = Integer.parseInt((String) quantOfDonuts.getSelectedItem());
-        int removeCount = 0;
-        int totalDonutsOfType = 0;
+        int x = Integer.parseInt((String) quantOfDonuts.getSelectedItem());
+        int removedCount = 0;
 
-        for (Donut donut : donutArrayList) {
-            if (mainDonut.equals(donut)) {
-                totalDonutsOfType++;
-            }
-        }
-
-        if (a > totalDonutsOfType || a > donutArrayList.size()) {
-            Toast.makeText(this, "Not enough donuts to remove", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        for (int i = donutArrayList.size() - 1; i >= 0; i--) {
-            if (mainDonut.equals(donutArrayList.get(i))) {
-                donutArrayList.remove(i);
-                removeCount++;
-                if (removeCount == a) {
-                    break;
+        if (mainDonut != null) {
+            for (int i = donutArrayList.size() - 1; i >= 0; i--) {
+                Donut currentDonut = donutArrayList.get(i);
+                if (mainDonut.getFlavor().equals(currentDonut.getFlavor()) &&
+                        mainDonut.getPrice().equals(currentDonut.getPrice())) {
+                    donutArrayList.remove(i);
+                    removedCount++;
+                    if (removedCount == x) {
+                        break;
+                    }
                 }
             }
+
+            // Notify the adapter that data set has changed
+            Objects.requireNonNull(recyclerView.getAdapter()).notifyDataSetChanged();
+            updateListView(); // Call updateListView after notifyDataSetChanged
+        } else {
+            Toast.makeText(this, "Please select a donut to remove", Toast.LENGTH_SHORT).show();
         }
-        updateListView();
     }
+
+
+
 
     private void updateListView() {
         ArrayAdapter<Donut> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, donutArrayList);
         listView.setAdapter(adapter);
+
+        adapter.notifyDataSetChanged();
     }
 }
