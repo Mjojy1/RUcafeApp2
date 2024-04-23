@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -58,24 +59,35 @@ public class AllOrdersActivity extends AppCompatActivity {
             if(orderNumbers.size() == 0 || orderNumberSpinner.getSelectedItem() == null){
                 return;
             }
-            if(orderNumbers.size() == 1){
+            //create alert dialog to confirm whether you want to remove order or not
+            AlertDialog.Builder builder = new AlertDialog.Builder(AllOrdersActivity.this);
+            builder.setTitle("Cancel Order");
+            builder.setMessage("Are you sure you want to cancel this order?");
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                if(orderNumbers.size() == 1){
+                    OrderTracker.removeOrder((int) orderNumberSpinner.getSelectedItem());
+                    orderNumbers.remove((int) orderNumberSpinner.getSelectedItem());
+                    orderNumberAdapter.notifyDataSetChanged();
+                    allOrdersListView.setAdapter(null);
+                    return;
+                }
                 OrderTracker.removeOrder((int) orderNumberSpinner.getSelectedItem());
                 orderNumbers.remove((int) orderNumberSpinner.getSelectedItem());
                 orderNumberAdapter.notifyDataSetChanged();
-                allOrdersListView.setAdapter(null);
-                return;
-            }
-            OrderTracker.removeOrder((int) orderNumberSpinner.getSelectedItem());
-            orderNumbers.remove((int) orderNumberSpinner.getSelectedItem());
-            orderNumberAdapter.notifyDataSetChanged();
-            //set the list view to display the order that is now currently selected by spinner
-            Order order = OrderTracker.getOrder((int) orderNumberSpinner.getSelectedItem());
-            ArrayList<MenuItem> orderItems = new ArrayList<>();
-            for(MenuItem item : order.getItems()){
-                orderItems.add(item);
-            }
-            ArrayAdapter<MenuItem> adapter = new ArrayAdapter<>(AllOrdersActivity.this, android.R.layout.simple_list_item_1, orderItems);
-            allOrdersListView.setAdapter(adapter);
+                //set the list view to display the order that is now currently selected by spinner
+                Order order = OrderTracker.getOrder((int) orderNumberSpinner.getSelectedItem());
+                ArrayList<MenuItem> orderItems = new ArrayList<>();
+                for(MenuItem item : order.getItems()){
+                    orderItems.add(item);
+                }
+                ArrayAdapter<MenuItem> adapter = new ArrayAdapter<>(AllOrdersActivity.this, android.R.layout.simple_list_item_1, orderItems);
+                allOrdersListView.setAdapter(adapter);
+                dialog.dismiss();
+            });
+            builder.setNegativeButton("No", (dialog, which) -> {
+                dialog.dismiss();
+            });
+            builder.show();
         });
 
         allOrdersBack.setOnClickListener(v -> {

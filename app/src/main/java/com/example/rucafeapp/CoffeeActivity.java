@@ -66,7 +66,7 @@ public class CoffeeActivity extends AppCompatActivity {
         addCoffee.setOnClickListener(v -> {
             String size = sizeSpinner.getSelectedItem().toString();
             for(int i = 0; i < quantitySpinner.getSelectedItemPosition()+1; i++){
-                OrderTracker.addCoffee(size, getAddOns(), subTotal());
+                OrderTracker.addCoffee(size, getAddOns(), singleCoffeePrice());
             }
         });
 
@@ -116,6 +116,9 @@ public class CoffeeActivity extends AppCompatActivity {
         price += sizePrice(sizeSpinner.getSelectedItem().toString());
         price *= Integer.parseInt(quantitySpinner.getSelectedItem().toString());
         return price;
+    }
+    private double singleCoffeePrice(){
+        return addOnPrice() + sizePrice(sizeSpinner.getSelectedItem().toString());
     }
     private double addOnPrice(){
         double price = 0;

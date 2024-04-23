@@ -5,6 +5,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,13 +70,18 @@ public class CurrentOrdersActivity extends AppCompatActivity {
                 OrderTracker.removeItem(removeItemTracker);
                 adapter.remove(removeItemTracker);
                 adapter.notifyDataSetChanged();
-                totalAmountInput.setText(String.format("%.2f", OrderTracker.getCurrentOrder().calculateTotal()));
+                totalAmountInput.setText(String.format("%.2f", OrderTracker.getCurrentOrder().calculateGrandTotal()));
                 subTotalInput.setText(String.format("%.2f", OrderTracker.getCurrentOrder().calculateTotal()));
                 salesTaxInput.setText(String.format("%.2f", OrderTracker.getCurrentOrder().calculateTotal() * 0.06625));
             }
         });
 
         placeOrder.setOnClickListener(v -> {
+            if(OrderTracker.getCurrentOrder().getItems().length == 0){
+                Toast toast = Toast.makeText(getApplicationContext(), "No items in order", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
             OrderTracker.placeOrder();
             adapter.clear();
             adapter.notifyDataSetChanged();
