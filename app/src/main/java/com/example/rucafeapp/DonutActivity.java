@@ -106,22 +106,22 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
     }
 
     private void AddDonutOrder() {
-        // Clear the existing selectedDonutsList to prevent duplicate entries
         selectedDonutsList.clear();
 
-        // Add the mainDonut to the selectedDonutsList
-        if (mainDonut != null) {
-            selectedDonutsList.add(mainDonut);
+        for (Donut donut : donutArrayList) {
+            OrderTracker.addDonut(donut.getFlavor(), donut.getPrice());
         }
 
-        // Create an intent to start the CurrentOrdersActivity
-        Intent intent = new Intent(DonutActivity.this, CurrentOrdersActivity.class);
-
-        // Pass the selected donuts list to the CurrentOrdersActivity
-        intent.putExtra("selected_donuts_list", selectedDonutsList);
+        Toast.makeText(this, "Added " + donutArrayList.size() + " donut(s) to the order", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
+
     public void addToDonutAL() {
+        if (mainDonut == null) {
+            return;
+        }
+
         int quantity = Integer.parseInt((String) quantOfDonuts.getSelectedItem());
         for (int i = 0; i < quantity; i++) {
             Donut donutToAdd = new Donut(mainDonut.getFlavor(), mainDonut.getPrice(), mainDonut.getImage());

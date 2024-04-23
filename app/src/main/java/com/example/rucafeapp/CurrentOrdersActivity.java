@@ -28,7 +28,7 @@ public class CurrentOrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.currentorder);
-        ArrayList<Donut> selectedDonuts = getIntent().getParcelableArrayListExtra("selected_donuts");
+
         Order order = OrderTracker.getCurrentOrder();
 
         currentOrderBack = findViewById(R.id.currentOrderBack);
