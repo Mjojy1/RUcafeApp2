@@ -2,11 +2,12 @@
  * @Author: Jack Zhong and Mathew Jojy
  */
 package com.example.rucafeapp;
-
+import android.os.Parcel;
+import android.os.Parcelable;
 /**
  * Donut class that extends MenuItem
  */
-public class Donut extends MenuItem{
+public class Donut extends MenuItem implements Parcelable{
     private double price;
     private String flavor;
     private int image;
@@ -27,6 +28,22 @@ public class Donut extends MenuItem{
         this.price = price;
         this.image = 0;
     }
+    protected Donut(Parcel in) {
+        price = in.readDouble();
+        flavor = in.readString();
+        image = in.readInt();
+    }
+    public static final Creator<Donut> CREATOR = new Creator<Donut>() {
+        @Override
+        public Donut createFromParcel(Parcel in) {
+            return new Donut(in);
+        }
+
+        @Override
+        public Donut[] newArray(int size) {
+            return new Donut[size];
+        }
+    };
 
     public Double getPrice() {
         return price;
@@ -58,6 +75,15 @@ public class Donut extends MenuItem{
                 ", price=" + price +
                 '}';
     }
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(price);
+        dest.writeString(flavor);
+        dest.writeInt(image);
+    }
 
 }

@@ -26,4 +26,7 @@
     <string name="rem"><![CDATA[<<]]></string>
     <string name="order_donuts">Order Donuts</string>
     <string name="home_screen">home screen</string>
+    <string name="add_to">Add to</string>
+    <string name="remove">Remove</string>
+    <string name="quantity_of_donuts">Quantity of Donuts</string>
 </resources>

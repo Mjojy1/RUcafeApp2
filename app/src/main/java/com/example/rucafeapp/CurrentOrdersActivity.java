@@ -28,16 +28,16 @@ public class CurrentOrdersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.currentorder);
-
+        ArrayList<Donut> selectedDonuts = getIntent().getParcelableArrayListExtra("selected_donuts");
         Order order = OrderTracker.getCurrentOrder();
 
-        currentOrderBack = (Button) findViewById(R.id.currentOrderBack);
-        currentOrderList = (ListView) findViewById(R.id.currentOrderList);
-        totalAmountInput = (TextInputEditText) findViewById(R.id.totalAmountInput);
-        subTotalInput = (TextInputEditText) findViewById(R.id.subTotalInput);
-        salesTaxInput = (TextInputEditText) findViewById(R.id.salesTaxInput);
-        removeItem = (Button) findViewById(R.id.removeItem);
-        placeOrder = (Button) findViewById(R.id.placeOrder);
+        currentOrderBack = findViewById(R.id.currentOrderBack);
+        currentOrderList = findViewById(R.id.currentOrderList);
+        totalAmountInput = findViewById(R.id.totalAmountInput);
+        subTotalInput = findViewById(R.id.subTotalInput);
+        salesTaxInput = findViewById(R.id.salesTaxInput);
+        removeItem = findViewById(R.id.removeItem);
+        placeOrder = findViewById(R.id.placeOrder);
 
         double tempTax = OrderTracker.getCurrentOrder().calculateTotal() * 0.06625;
         double grandtotal = OrderTracker.getCurrentOrder().calculateTotal() + tempTax;
@@ -47,9 +47,12 @@ public class CurrentOrdersActivity extends AppCompatActivity {
         salesTaxInput.setText(String.format("%.2f", tempTax));
 
         ArrayList<MenuItem> orderItems = new ArrayList<>();
-        for(MenuItem item : order.getItems()){
-            orderItems.add(item);
+        if (order.getItems() != null) {
+            for (MenuItem item : order.getItems()) {
+                orderItems.add(item);
+            }
         }
+
         ArrayAdapter<MenuItem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, orderItems);
         currentOrderList.setAdapter(adapter);
 
@@ -62,7 +65,7 @@ public class CurrentOrdersActivity extends AppCompatActivity {
         });
 
         removeItem.setOnClickListener(v -> {
-            if(removeItemTracker != null){
+            if (removeItemTracker != null) {
                 OrderTracker.removeItem(removeItemTracker);
                 adapter.remove(removeItemTracker);
                 adapter.notifyDataSetChanged();

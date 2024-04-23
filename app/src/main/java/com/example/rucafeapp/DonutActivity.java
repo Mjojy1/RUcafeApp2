@@ -25,7 +25,8 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
 
     public Donut mainDonut;
     private ListView listView;
-    private ArrayList<Donut> donutArrayList = new ArrayList<Donut>();
+    public ArrayList<Donut> donutArrayList = new ArrayList<Donut>();
+    private ArrayList<Donut> selectedDonutsList = new ArrayList<>();
     private Button add;
     private Button remove;
     private Spinner quantOfDonuts;
@@ -36,6 +37,7 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.donut);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.coffeeSize), (v, insets) -> {
             Insets systemBars = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
@@ -76,18 +78,18 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
         RecyclerView recyclerView = findViewById(R.id.donutList);
 
         List<Donut> donuts = new ArrayList<>();
-        donuts.add(new Donut("jelly", 1.79, R.drawable.firstimga));
-        donuts.add(new Donut("vanilla Frosted Cake", 1.89, R.drawable.vanillafrosted));
-        donuts.add(new Donut("Chocolate Cake", 1.89, R.drawable.chocofrost));
-        donuts.add(new Donut("Blueberry Cake", 1.89, R.drawable.blueberry));
-        donuts.add(new Donut("Double Chocolate", 1.79, R.drawable.dobbychoc));
-        donuts.add(new Donut("Old Fashion", 1.79, R.drawable.oldfashion));
-        donuts.add(new Donut("Glazed Cake", 1.89, R.drawable.glazed));
-        donuts.add(new Donut("Plain Munchkins", .39, R.drawable.oldfashionmunch));
-        donuts.add(new Donut("Boston Creme", 1.79, R.drawable.bostoncreme));
-        donuts.add(new Donut("Strawberry Frosted", 1.79, R.drawable.strawberryd));
-        donuts.add(new Donut("Glazed Munchkins", .39, R.drawable.glazedmunch));
-        donuts.add(new Donut("Chocolate Munchkins", .39, R.drawable.chocolate_munch));
+        donuts.add(new Donut("jelly", 1.79, R.drawable.firstimg));
+        donuts.add(new Donut("vanilla Frosted Cake", 1.89, R.drawable.secondimg));
+        donuts.add(new Donut("Chocolate Cake", 1.89, R.drawable.thirdimg));
+        donuts.add(new Donut("Blueberry Cake", 1.89, R.drawable.fourthimg));
+        donuts.add(new Donut("Double Chocolate", 1.79, R.drawable.fifthimg));
+        donuts.add(new Donut("Old Fashion", 1.79, R.drawable.sixthimg));
+        donuts.add(new Donut("Glazed Cake", 1.89, R.drawable.seventhimg));
+        donuts.add(new Donut("Plain Munchkins", .39, R.drawable.eightimg));
+        donuts.add(new Donut("Bostvon Creme", 1.79, R.drawable.ninthimg));
+        donuts.add(new Donut("Strawberry Frosted", 1.79, R.drawable.tenthimg));
+        donuts.add(new Donut("Glazed Munchkins", .39, R.drawable.eleventhimg));
+        donuts.add(new Donut("Chocolate Munchkins", .39, R.drawable.twelthimg));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapter(getApplicationContext(), donuts, (SelectListener) this));
@@ -104,17 +106,26 @@ public class DonutActivity extends AppCompatActivity implements SelectListener {
     }
 
     private void AddDonutOrder() {
-        for(Donut donut : donutArrayList) {
-            OrderTracker.addDonut(donut.getFlavor(), donut.getPrice());
+        // Clear the existing selectedDonutsList to prevent duplicate entries
+        selectedDonutsList.clear();
+
+        // Add the mainDonut to the selectedDonutsList
+        if (mainDonut != null) {
+            selectedDonutsList.add(mainDonut);
         }
-        donutArrayList.clear();
-        updateListView();
+
+        // Create an intent to start the CurrentOrdersActivity
+        Intent intent = new Intent(DonutActivity.this, CurrentOrdersActivity.class);
+
+        // Pass the selected donuts list to the CurrentOrdersActivity
+        intent.putExtra("selected_donuts_list", selectedDonutsList);
     }
 
     public void addToDonutAL() {
-        int a = Integer.parseInt((String) quantOfDonuts.getSelectedItem());
-        for (int i = 0; i < a; i++) {
-            donutArrayList.add(mainDonut);
+        int quantity = Integer.parseInt((String) quantOfDonuts.getSelectedItem());
+        for (int i = 0; i < quantity; i++) {
+            Donut donutToAdd = new Donut(mainDonut.getFlavor(), mainDonut.getPrice(), mainDonut.getImage());
+            donutArrayList.add(donutToAdd);
         }
         updateListView();
     }

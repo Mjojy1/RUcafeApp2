@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     Context context;
     List<Donut> donuts;
     private SelectListener donutListener;
 
-    public MyAdapter(Context context, List<Donut> donuts,SelectListener donutListener) {
+    public MyAdapter(Context context, List<Donut> donuts, SelectListener donutListener) {
         this.context = context;
         this.donuts = donuts;
         this.donutListener = donutListener;
@@ -24,28 +24,27 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.donutrecycler, parent, false));
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.donutrecycler, parent, false);
+        return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.donutPrice.setText(String.valueOf(donuts.get(position).getPrice()));
-        myViewHolder.donutType.setText(donuts.get(position).getFlavor());
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Donut donut = donuts.get(position);
+        holder.donutPrice.setText(String.valueOf(donut.getPrice()));
+        holder.donutType.setText(donut.getFlavor());
 
-        // Check if imageView is null before setting image resource
-        if (myViewHolder.imageView != null) {
-            myViewHolder.imageView.setImageResource(donuts.get(position).getImage());
+        if (donut.getImage() != 0) {
+            holder.imageView.setImageResource(donut.getImage());
         }
 
-        myViewHolder.donutRelativeLayout.setOnClickListener(new View.OnClickListener() {
+        holder.donutRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                donutListener.onItemClick(donuts.get(position));
+                donutListener.onItemClick(donut);
             }
         });
-
     }
 
     @Override
